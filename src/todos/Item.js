@@ -2,9 +2,15 @@ import React, { Component } from 'react';
 
 class Item extends Component {
   render() {
+    const list = ['apple', 'banana', 'mango' ,'orange'];
+
     return (
       <div className="Item">
-        <p> Some Item </p>
+        <ul>
+            {list.map(function(item) {
+              return <li> item </li>;
+            })}
+        </ul>
       </div>
     );
   }
