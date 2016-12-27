@@ -5,11 +5,21 @@ import './index.css';
 function Square(props){
   return (
     <button className="square" onClick={()=> props.onClick()}>
-    {props.value}
+      {props.value}
     </button>
   );
 }
 
+class Mylabel extends React.Component{
+  render() {
+    return (
+      <div>
+        <p> First Line: {this.props.firstLine}</p>
+        <p> Second Line:  {this.props.secondLine}</p>
+      </div>
+    );
+  }
+}
 class Board extends React.Component {
   constructor(){
     super();
@@ -32,16 +42,18 @@ class Board extends React.Component {
       xIsNext: !this.state.xIsNext
     });
   }
+
   render() {
     const winner = calculateWinner(this.state.squares);
     let status;
     if (winner) {
       status = "Winner:" + winner;
     }else {
-      status = 'Next Player ' + (this.state.isNext ? 'X' : 'O');
+      status = 'Next Player ' + (this.state.isNext ? 'X' : 'O') + ', label is ' + this.state.label;
     }
     return (
       <div>
+        <Mylabel firstLine="This is the start" secondLine="of something cool"/>
         <div className="status">{status}</div>
         <div className="board-row">
           {this.renderSquare(0)}
@@ -64,6 +76,10 @@ class Board extends React.Component {
 }
 
 class Game extends React.Component {
+  constructor() {
+    super();
+    this.state = { label: "Hi I am the label"};
+  }
   render() {
     return (
       <div className="game">
