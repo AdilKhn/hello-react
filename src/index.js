@@ -42,7 +42,7 @@ class Board extends React.Component {
     }
     return (
       <div>
-        <Mylabel firstLine="This is the start" secondLine="of something cool"/>
+        <Mylabel firstLine="This is the start" secondLine={['homer', 'bart','lisa']}/>
         <div className="status">{status}</div>
         <div className="board-row">
           {this.renderSquare(0)}
