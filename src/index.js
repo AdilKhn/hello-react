@@ -1,18 +1,58 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
-function tick() {
-  const element = (
-    <div>
-      <h1> Kanpur rules </h1>
-      <h2> It is {new Date().toLocaleTimeString()}. </h2>
-    </div>
-  );
-  ReactDOM.render(
-    element,
-    document.getElementById('root')
+function Avatar(props) {
+  return (
+   <img className="Avatar" 
+     src={props.user.avatarUrl}
+     alt={props.user.name}
+   />
   );
 }
 
-setInterval(tick, 1000);
+function UserInfo(props){
+  return (
+    <div className="UserInfo">
+      <Avatar user={props.user} />
+      <div className="UserInfo-name">
+        {props.user.name}
+      </div>
+    </div>
+  );
+}
+function Comment(props) {
+  return (
+    <div className="Comment">
+     <UserInfo user={props.author} />
+      <div className="Comment-text">
+        {props.text}
+      </div>
+      <div className="Comment-date">
+        {formatDate(props.date)}
+      </div>
+    </div>
+  );
+}
+function formatDate(date) {
+  return date.toLocaleDateString();
+}
+function Welcome(props){
+  return <h1>Hello, {props.name}</h1>;
+}
+
+function App() {
+  return (
+    <div>
+      <Welcome name="Adil"/>
+      <Welcome name="Nadir"/>
+      <Welcome name="Zareen"/>
+    </div>
+  );
+}
+const element = <Welcome name="Naseem"/>;
+const comment= <Comment name="Naseem" />;
+
+ReactDOM.render(
+  comment,
+  document.getElementById('root')
+);
