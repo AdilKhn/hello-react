@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import Utils from './utils';
 function Banner(props) {
   return (
     <div>
@@ -18,12 +18,6 @@ class Clock extends React.Component {
       place: props.place || "Home"
     };
   }
-  
-  getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
 
   componentDidMount() {
     this.timerID = setInterval(
@@ -38,7 +32,7 @@ class Clock extends React.Component {
   tick() {
     this.setState({
       date: new Date(),
-      place: ["homer", "marge", "bart", "lisa", "maggie"][this.getRandomInt(0,4)]
+      place: ["homer", "marge", "bart", "lisa", "maggie"][Utils.getRandomInt(0,4)]
     });
   }
 
