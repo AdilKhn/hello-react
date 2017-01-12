@@ -18,12 +18,17 @@ class Clock extends React.Component {
       place: props.place || "Home"
     };
   }
+  
+  getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
 
   componentDidMount() {
     this.timerID = setInterval(
       () => { this.tick();},
-      1000
-    );
+      1000);
   }
 
   componentWillUnmount() {
@@ -31,7 +36,10 @@ class Clock extends React.Component {
   }
 
   tick() {
-    this.setState({date: new Date()});
+    this.setState({
+      date: new Date(),
+      place: ["homer", "marge", "bart", "lisa", "maggie"][this.getRandomInt(0,4)]
+    });
   }
 
   render() {
