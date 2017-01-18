@@ -2,15 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Utils from './utils';
 import MyButton from './components/MyButton';
-function Banner(props) {
-  return (
-    <div>
-      <h1> This is a banner from a function </h1>
-      <h2> </h2>
-    </div>
-  );
-}
-
 
 
 class Clock extends React.Component {
@@ -51,8 +42,6 @@ class Clock extends React.Component {
 
 ReactDOM.render(
   <div>
-    <Banner/>
-    <Clock place="Jupiter"/>
     <MyButton />
   </div>,
   document.getElementById('root')
