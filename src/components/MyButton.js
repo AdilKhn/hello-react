@@ -24,7 +24,7 @@ export default class MyButton extends React.Component{
         netData: data 
       }));
     }
-    
+
   }
 
   handleClick(e) {
@@ -46,11 +46,11 @@ export default class MyButton extends React.Component{
     console.log("ENDHERE");
     return (
       <div>
-      <button onClick={this.handleClick}>
-        {this.state.isToggleOn ? 'ON' : 'OFF'}
-      </button>
-      <RemoteData remoteData={this.state.netData.title} />
-    </div>
+        <button onClick={this.handleClick}>
+          {this.state.isToggleOn ? 'ON' : 'OFF'}
+        </button>
+        <RemoteData remoteData={this.state.netData.title} />
+      </div>
     );
   }
 }

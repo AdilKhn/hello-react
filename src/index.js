@@ -4,6 +4,21 @@ import Utils from './utils';
 import MyButton from './components/MyButton';
 
 
+
+function Greeting(props) {
+  const isLoggedIn = props.isLoggedIn;
+  if (isLoggedIn) {
+    return <UserGreeting />;
+  }
+  return <GuestGreeting />;
+}
+function UserGreeting(props){
+  return <h1> Welcome Back! </h1>;
+}
+function GuestGreeting(props){
+  return <h1> Please Sign Up. </h1>;
+}
+
 class Clock extends React.Component {
   constructor(props) {
     super(props);
@@ -42,6 +57,7 @@ class Clock extends React.Component {
 
 ReactDOM.render(
   <div>
+    <Greeting isLoggedIn = {true}/>
     <MyButton />
   </div>,
   document.getElementById('root')
