@@ -5,7 +5,7 @@ function RemoteData(props) {
   
   const names = props.remoteData || ['no data yet'];
   let namesLi = names.map((name) => { 
-   return  <li> {name} </li>
+   return  <li key={name}> {name} </li>
   });
 
 
