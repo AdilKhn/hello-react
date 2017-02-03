@@ -12,7 +12,7 @@ function RemoteData(props) {
 export default class MyButton extends React.Component{
   constructor(props) {
     super(props);
-    this.state = {isToggleOn: true, netData: {}};
+    this.state = {isToggleOn: false, netData: ""};
     this.handleClick = this.handleClick.bind(this);
     this.handleNetData = this.handleNetData.bind(this);
   }
@@ -35,7 +35,7 @@ export default class MyButton extends React.Component{
     Utils.getUrlData(this.handleNetData);
     this.setState(pState => ({
       isToggleOn: !pState.isToggleOn,
-      netData: {}
+      netData: ""
     }));
 
   }
@@ -49,7 +49,7 @@ export default class MyButton extends React.Component{
         <button onClick={this.handleClick}>
           {this.state.isToggleOn ? 'ON' : 'OFF'}
         </button>
-        <RemoteData remoteData={this.state.netData.toString()}/>
+        <RemoteData remoteData={this.state.netData}/>
       </div>
     );
   }
