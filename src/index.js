@@ -57,7 +57,7 @@ class Clock extends React.Component {
 
 ReactDOM.render(
   <div>
-    <Greeting isLoggedIn = {true}/>
+    <Greeting isLoggedIn={true}/>
     <MyButton />
   </div>,
   document.getElementById('root')
