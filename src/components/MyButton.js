@@ -21,7 +21,7 @@ export default class MyButton extends React.Component{
     console.log(data);
     if(this.state.isToggleOn) {
       this.setState(pState => ({
-        netData: data 
+        netData: data.names.toString()
       }));
     }
 
@@ -49,7 +49,7 @@ export default class MyButton extends React.Component{
         <button onClick={this.handleClick}>
           {this.state.isToggleOn ? 'ON' : 'OFF'}
         </button>
-        <RemoteData remoteData={this.state.netData.title} />
+        <RemoteData remoteData={this.state.netData.toString()}/>
       </div>
     );
   }

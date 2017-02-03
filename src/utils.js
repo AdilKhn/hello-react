@@ -9,7 +9,7 @@ export default class Utils {
 
   static getUrlData(callback) {
     let client = new Client();
-    client.get('http://jsonplaceholder.typicode.com/posts/1', 
+    client.get('http://127.0.0.1:3001/api/names', 
       function(data) {
         callback(data);
       })
