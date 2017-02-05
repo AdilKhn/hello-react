@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Utils from './utils';
 import MyButton from './components/MyButton';
+import NameInput from './components/NameInput';
 
 
 
@@ -58,7 +59,8 @@ class Clock extends React.Component {
 ReactDOM.render(
   <div>
     <Greeting isLoggedIn={true}/>
-    <MyButton />
+    <MyButton/>
+    <NameInput/>
   </div>,
   document.getElementById('root')
 
