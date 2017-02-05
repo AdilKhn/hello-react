@@ -15,4 +15,20 @@ export default class Utils {
       })
   }
 
+  static postUrlData(value, callback){
+    let client = new Client();
+    var args = {
+      data: { name: value },
+      headers: { "Content-Type": "application/json" }
+    };
+
+    client.post("http://127.0.0.1:3001/api/name", args, function (data, response) {
+      // parsed response body as js object
+      console.log(data);
+      // raw response
+      console.log(response);
+    });
+
+
+  }
 }
