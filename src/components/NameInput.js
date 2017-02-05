@@ -1,4 +1,5 @@
 import React from 'react';
+import Utils from '../utils'
 export default class NameInput extends React.Component {
 
   constructor(props){
@@ -10,12 +11,13 @@ export default class NameInput extends React.Component {
   }
 
   handleChange(event){
-    console.log('new value is ' + event.target.value);
     this.setState({value: event.target.value});
   }
 
   handleSubmit(event) {
-    alert("Change me to make a POST: " + this.state.value);
+    Utils.postUrlData(this.state.value, function(){
+      console.log("POST done");
+    })
     event.preventDefault();
   }
 
