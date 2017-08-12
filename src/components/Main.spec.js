@@ -6,6 +6,12 @@ describe('<Main/>', () => {
 
   it('loads without crashing', ()=>{
     expect(shallow(<Main/>).instance()).to.be.an.instanceOf(Main);
-    expect(true).to.equal(true); 
   });
+
+  it('has props', () => {
+  
+    const comp = shallow(<Main foo={'homy'}/>, {myname: 'hoomie'});
+    console.log(comp.state());
+    console.log(comp.instance().props);
+  })
 });

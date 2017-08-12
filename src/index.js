@@ -5,7 +5,7 @@ import Main from './components/Main.js';
 
 ReactDOM.render(
   <div>
-    <Main/>
+    <Main myname={'homer'}/>
   </div>,
   document.getElementById('root')
 
