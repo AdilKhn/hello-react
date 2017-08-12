@@ -5,7 +5,7 @@ import Main from './Main';
 describe('<Main/>', () => {
 
   it('loads without crashing', ()=>{
-    shallow(<Main/>);
+    expect(shallow(<Main/>).instance()).to.be.an.instanceOf(Main);
     expect(true).to.equal(true); 
   });
 });
