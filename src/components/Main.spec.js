@@ -1,8 +1,11 @@
+import React, {Component} from 'react';
 import {expect} from 'chai';
+import {shallow} from 'enzyme';
+import Main from './Main';
+describe('<Main/>', () => {
 
-describe('gotta start somewhere', () => {
-
-  it('lets see', ()=>{
+  it('loads without crashing', ()=>{
+    shallow(<Main/>);
     expect(true).to.equal(true); 
   });
 });
