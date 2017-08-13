@@ -12,6 +12,7 @@
     "eslint": "^4.4.1",
     "jsdom": "^11.1.0",
     "mocha": "^3.5.0",
+    "mocha-better-spec-reporter": "^3.1.0",
     "react-addons-test-utils": "^15.6.0",
     "react-scripts": "0.8.0",
     "react-test-renderer": "^15.6.1",
@@ -25,7 +26,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "mocha -w --compilers js:babel-core/register src/**/*.spec.js",
+    "test": "mocha --verbose -w --compilers js:babel-core/register src/**/*.spec.js -R mocha-better-spec-reporter -u bdd",
     "eject": "react-scripts eject"
   }
 }
