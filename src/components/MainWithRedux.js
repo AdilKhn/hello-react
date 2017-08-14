@@ -17,19 +17,18 @@ export default class MainWithRedux extends Component{
       }
     }
     this.state={count: 0};
-    let store = createStore(counter);
-    this.rstore = store;
-    this.rstore.subscribe(() =>{
-      this.setState({count:this.rstore.getState() });
+    this.store = createStore(counter);
+    this.store.subscribe(() =>{
+      this.setState({count:this.store.getState() });
     })
   }
 
   doPlus(){
-    this.rstore.dispatch({type: 'INCREMENT'});
+    this.store.dispatch({type: 'INCREMENT'});
   }
 
   doMinus(){
-    this.rstore.dispatch({type: 'DECREMENT'});
+    this.store.dispatch({type: 'DECREMENT'});
   }
   render() {
     return(
