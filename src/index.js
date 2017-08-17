@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from './components/Main.js';
-import MainWithRedux from './components/MainWithRedux.js';
+import MainWithReactReduxTogether from './components/MainWithReactReduxTogether';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import greeting from './reducers/greeting.js';
 
-
+let store = createStore(greeting);
 ReactDOM.render(
-  <div>
-    <Main myname={'homer'}/>
-    <MainWithRedux />
-  </div>,
+  <Provider store={store}>
+    <div>
+      <MainWithReactReduxTogether />
+    </div>
+  </Provider>,
   document.getElementById('root')
 
 );
