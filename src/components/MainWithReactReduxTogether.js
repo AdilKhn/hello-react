@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import Hello from './Hello.js';
 
 const mapStateToProps = state => {
   return {
@@ -42,6 +43,8 @@ class MainWithReactReduxTogether extends Component{
           <input type='text' onChange={this.handleTextInput.bind(this)}/>
           <p>Statement: {this.props.statement}</p>
         </div>
+        <hr/>
+        <Hello myName={this.props.statement}/>
       </div>
     ) 
   }

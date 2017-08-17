@@ -1,10 +1,10 @@
 import React from 'react';
 
 
-const Hello = () => (
-
+const Hello = ({myName}) => (
     <div>
       <p>I am the Hello Component </p>
+      <p>My name is {myName}</p>
     </div>
 )
 
