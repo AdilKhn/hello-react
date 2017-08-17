@@ -13,21 +13,22 @@ const mapStateToProps = state => {
       }
       return `You passed in ${param}`;
     },
- 
     statement: (state && state.statement) || 'empty'
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    sayHello: () => {
-      console.log(`sayHello called`);
-      dispatch({type: 'HELLO'});
+    sayHello: (val) => {
+      dispatch({type: 'HELLO', payload: val});
     }
   }
 }
 
 class MainWithReactReduxTogether extends Component{
+   handleTextInput(event){
+      this.props.sayHello(event.target.value);
+   }
   render() {
     return(
       <div>
@@ -38,7 +39,7 @@ class MainWithReactReduxTogether extends Component{
         <p>MappedStateToProps, funcWithParam: {this.props.funcWithParam(()=>{return 'garbage'})}</p>
         <hr/>
         <div>
-          <button onClick={this.props.sayHello}>Say hello</button>
+          <input type='text' onChange={this.handleTextInput.bind(this)}/>
           <p>Statement: {this.props.statement}</p>
         </div>
       </div>
@@ -46,6 +47,5 @@ class MainWithReactReduxTogether extends Component{
   }
 }
 
-const MainWithReactReduxTogetherContainer =  connect(mapStateToProps, mapDispatchToProps)(MainWithReactReduxTogether);
+export default connect(mapStateToProps, mapDispatchToProps)(MainWithReactReduxTogether);
 
-export default MainWithReactReduxTogetherContainer;

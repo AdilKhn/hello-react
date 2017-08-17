@@ -1,10 +1,9 @@
 const greeting = (state, action) =>{
   switch (action.type){
    case 'HELLO':
-      console.log('HELLO action called');
       return {
           ...state,
-          statement: 'Hello There'
+          statement: 'Hello There ' + action.payload
       }
    case 'BYE': 
       return {
