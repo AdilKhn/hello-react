@@ -13,5 +13,4 @@ ReactDOM.render(
     </div>
   </Provider>,
   document.getElementById('root')
-
 );

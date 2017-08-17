@@ -3,19 +3,19 @@ import {createStore} from 'redux';
 import {connect} from 'react-redux';
 
 const mapStateToProps = state => {
-    return {
-      fooString: 'Homer',
-      fooFunc: function(){
-          return 'Homer from func';
-      },
-      funcWithParam: function(param){
-        if (typeof param === 'function'){
-          return param();
-        }
-         return `You passed in ${param}`;
+  return {
+    fooString: 'Homer',
+    fooFunc: function(){
+      return 'Homer from func';
+    },
+    funcWithParam: function(param){
+      if (typeof param === 'function'){
+        return param();
       }
+      return `You passed in ${param}`;
     }
   }
+}
 
 class MainWithReactReduxTogether extends Component{
 
