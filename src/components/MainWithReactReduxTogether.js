@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import Hello from './Hello.js';
+import {sayHelloAction} from '../actions/greeting.js';
 
 const mapStateToProps = state => {
   return {
@@ -21,7 +22,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     sayHello: (val) => {
-      dispatch({type: 'HELLO', payload: val});
+      dispatch(sayHelloAction(val));
     }
   }
 }
