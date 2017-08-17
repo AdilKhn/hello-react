@@ -4,7 +4,16 @@ import {connect} from 'react-redux';
 
 const mapStateToProps = state => {
     return {
-      foo: 'Homer'
+      fooString: 'Homer',
+      fooFunc: function(){
+          return 'Homer from func';
+      },
+      funcWithParam: function(param){
+        if (typeof param === 'function'){
+          return param();
+        }
+         return `You passed in ${param}`;
+      }
     }
   }
 
@@ -45,7 +54,10 @@ class MainWithReactReduxTogether extends Component{
         <button onClick={this.doPlus.bind(this)}>Increment</button>
         <button onClick={this.doMinus.bind(this)} >Decrement</button>
         <p>Count: {this.state.count}</p>
-        <p>MappedStateToProps: {this.props.foo}</p>
+        <p>MappedStateToProps, fooString: {this.props.fooString}</p>
+        <p>MappedStateToProps, fooFunc: {this.props.fooFunc()}</p>
+        <p>MappedStateToProps, funcWithParam: {this.props.funcWithParam('Thunky')}</p>
+        <p>MappedStateToProps, funcWithParam: {this.props.funcWithParam(()=>{return 'garbage'})}</p>
       </div>
     ) 
   }
