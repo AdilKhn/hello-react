@@ -1,6 +1,7 @@
 const greeting = (state, action) =>{
   switch (action.type){
    case 'HELLO':
+      console.log('HELLO action called');
       return {
           ...state,
           statement: 'Hello There'

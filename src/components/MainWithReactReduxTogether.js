@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {createStore} from 'redux';
 import {connect} from 'react-redux';
 
 const mapStateToProps = state => {
@@ -13,56 +12,40 @@ const mapStateToProps = state => {
         return param();
       }
       return `You passed in ${param}`;
+    },
+ 
+    statement: (state && state.statement) || 'empty'
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    sayHello: () => {
+      console.log(`sayHello called`);
+      dispatch({type: 'HELLO'});
     }
   }
 }
 
 class MainWithReactReduxTogether extends Component{
-
-  constructor(props){
-    super(props);
-
-    function counter(state=0, action){
-      switch(action.type){
-        case 'INCREMENT':
-          return state + 1
-        case 'DECREMENT':
-          return state - 1
-        default:
-          return state 
-      }
-    }
-    this.state={count: 0};
-    this.store = createStore(counter);
-    this.store.subscribe(() =>{
-      this.setState({count:this.store.getState() });
-    })
-  }
-
-  doPlus(){
-    this.store.dispatch({type: 'INCREMENT'});
-  }
-
-  doMinus(){
-    this.store.dispatch({type: 'DECREMENT'});
-  }
-
   render() {
     return(
       <div>
         <p>hi in main with redux</p>
-        <button onClick={this.doPlus.bind(this)}>Increment</button>
-        <button onClick={this.doMinus.bind(this)} >Decrement</button>
-        <p>Count: {this.state.count}</p>
         <p>MappedStateToProps, fooString: {this.props.fooString}</p>
         <p>MappedStateToProps, fooFunc: {this.props.fooFunc()}</p>
         <p>MappedStateToProps, funcWithParam: {this.props.funcWithParam('Thunky')}</p>
         <p>MappedStateToProps, funcWithParam: {this.props.funcWithParam(()=>{return 'garbage'})}</p>
+        <hr/>
+        <div>
+          <button onClick={this.props.sayHello}>Say hello</button>
+          <p>Statement: {this.props.statement}</p>
+        </div>
       </div>
     ) 
   }
 }
 
-const MainWithReactReduxTogetherContainer =  connect(mapStateToProps)(MainWithReactReduxTogether);
+const MainWithReactReduxTogetherContainer =  connect(mapStateToProps, mapDispatchToProps)(MainWithReactReduxTogether);
 
 export default MainWithReactReduxTogetherContainer;
