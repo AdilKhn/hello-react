@@ -45,7 +45,7 @@ class MainWithReactReduxTogether extends Component{
           <p>Statement: {this.props.statement}</p>
         </div>
         <hr/>
-        <Hello myName={this.props.statement}/>
+        <Hello myName={this.props.statement} age={33}/>
       </div>
     ) 
   }

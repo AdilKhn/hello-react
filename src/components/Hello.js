@@ -3,10 +3,10 @@ import React from 'react';
 function capIt(input){
   return input.toUpperCase();
 }
-const Hello = ({myName}) => (
+const Hello = (props) => (
     <div>
       <p>I am the Hello Component </p>
-      <p>My name is {capIt(myName)}</p>
+      <p>My name is {capIt(props.myName)} and I am {props.age} years old</p>
     </div>
 )
 
