@@ -4,6 +4,7 @@ import Hello from './Hello.js';
 import {sayHelloAction} from '../actions/greeting.js';
 
 const mapStateToProps = state => {
+  console.log('MSTP: ', state);
   return {
     fooString: 'Homer',
     fooFunc: function(){
@@ -15,13 +16,15 @@ const mapStateToProps = state => {
       }
       return `You passed in ${param}`;
     },
-    statement: (state && state.statement) || 'empty'
+    statement: (state && state.statement) || 'empty',
+    runMe: state && state.runMe
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     sayHello: (val) => {
+      console.log('OWN PROPS:', ownProps);
       dispatch(sayHelloAction(val));
     }
   }
@@ -45,7 +48,7 @@ class MainWithReactReduxTogether extends Component{
           <p>Statement: {this.props.statement}</p>
         </div>
         <hr/>
-        <Hello myName={this.props.statement} age={33}/>
+        <Hello myName={this.props.statement} age={33} runMeOutput={this.props.runMe} />
       </div>
     ) 
   }

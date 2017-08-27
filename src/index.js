@@ -9,7 +9,7 @@ let store = createStore(greeting);
 ReactDOM.render(
   <Provider store={store}>
     <div>
-      <MainWithReactReduxTogether />
+      <MainWithReactReduxTogether foo='homer'/>
     </div>
   </Provider>,
   document.getElementById('root')
