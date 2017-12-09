@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {ToggleButtonGroup} from 'react-bootstrap';
 import Child from './Child.js';
 
 export default class Main extends Component{
