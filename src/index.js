@@ -1,25 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MainWithReactReduxTogether from './components/MainWithReactReduxTogether';
-import {createStore} from 'redux';
-import {Provider} from 'react-redux';
-import greeting from './reducers/greeting.js';
 import {ToggleButtonGroup, ToggleButton} from 'react-bootstrap';
 
-let store = createStore(greeting);
+
+
+const WillWontToggle = ({caption, personData}) => {
+  return (
+    <ToggleButtonGroup name="mytbg" type="radio" defaultValue={1}>
+      <ToggleButton value={1} bsStyle={"success"}>{caption}</ToggleButton>
+      <ToggleButton value={2} bsStyle={"danger"}>{personData.name} is {personData.age()}</ToggleButton>
+    </ToggleButtonGroup>
+  )
+}
+
+const person = {
+  name: 'Homer',
+  age : function() { return 99;}
+};
 ReactDOM.render(
-  <Provider store={store}>
     <div>
       <div>
         <p>
           Here it is
         </p>
       </div>
-      <ToggleButtonGroup name="mytbg" type="radio" defaultValue={1}>
-        <ToggleButton value={1} bsStyle={"success"}> Will  </ToggleButton>
-        <ToggleButton value={2} bsStyle={"danger"}> Wont </ToggleButton>
-      </ToggleButtonGroup>
-    </div>
-  </Provider>,
+      <WillWontToggle caption={"Hi There"} personData={person}/>
+    </div>,
   document.getElementById('root')
 );
