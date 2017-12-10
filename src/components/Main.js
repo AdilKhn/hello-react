@@ -27,7 +27,20 @@ export default class Main extends Component{
   handleClick(e, stat){
     e.preventDefault();
     console.log('CLICKed by' , stat);
-    this.setState({toggleState: {willBid: !this.state.toggleState.willBid}});
+
+    let current = this.state.toggleState;
+
+
+    if (stat === 'will') {
+      current.willBid = !current.willBid;
+      current.wontBid = false;
+    }
+
+    if (stat === 'wont') {
+      current.wontBid = !current.wontBid;
+      current.willBid = false;
+    }
+    this.setState({toggleState: current });
   }
 
   render() {
