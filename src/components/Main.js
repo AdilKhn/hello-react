@@ -1,39 +1,39 @@
 import React, { Component } from 'react';
-import {ToggleButtonGroup} from 'react-bootstrap';
-import Child from './Child.js';
+import {ToggleButtonGroup, ToggleButton} from 'react-bootstrap';
+
+const WillWontToggle = ({toggleState, personData, clickHandler}) => {
+  return (
+    <ToggleButtonGroup name="mytbg" type="radio" defaultValue={null}>
+      <ToggleButton onClick={(e) => clickHandler(e, 'will')} value={1} bsStyle={toggleState.willBid ? "success" : "default"}>Will Bid</ToggleButton>
+      <ToggleButton onClick={(e) => clickHandler(e, 'wont')} value={2} bsStyle={toggleState.wontBid ? "danger" : "default"}>Won't Bid</ToggleButton>
+    </ToggleButtonGroup>
+  )
+}
 
 export default class Main extends Component{
 
   constructor(props){
     super(props);
-    this.state = {foo: 'in constructor'}
-    this.sayHello.bind(this);
-    this.sayChildHello.bind(this);
-    this.stateMutatorPassedToChild.bind(this);
-    this.stateMutator.bind(this);
+    this.state = {
+      toggleState: {
+          willBid: false,
+          wontBid: false
+      }
+    }
+    this.handleClick = this.handleClick.bind(this);
 
   }
-  sayHello(){
-      return 'Hello from Main' ;
-  }
-  sayChildHello(){
-    return 'Hello from Main Child!';
+
+  handleClick(e, stat){
+    e.preventDefault();
+    console.log('CLICKed by' , stat);
+    this.setState({toggleState: {willBid: !this.state.toggleState.willBid}});
   }
 
-  stateMutator(){
-      this.setState({age: 33});
-  }
-
-  stateMutatorPassedToChild(){
-    this.setState({desc: 'This is the description'});
-  }
   render() {
     return(
       <div>
-        <p>hi there</p>
-        <p>{this.state.foo}</p>
-        <p>{this.sayHello()}</p>
-        <Child doThis={this.sayChildHello} mutateParent={this.stateMutatorPassedToChild.bind(this)}/>
+        <WillWontToggle clickHandler={this.handleClick} toggleState={this.state.toggleState}/>
       </div>
     ) 
   }
